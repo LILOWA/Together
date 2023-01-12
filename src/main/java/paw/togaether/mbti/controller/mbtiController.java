@@ -25,24 +25,28 @@ public class mbtiController {
 	@RequestMapping(value = "/mbti")
 	public ModelAndView mbti_test(CommandMap commandMap, HttpServletRequest request, HttpSession session) throws Exception {
 		ModelAndView mv = new ModelAndView("/mbti/test");
-		
+			
 		session = request.getSession(false);
 		
-		if(session != null) {
+		if (session != null) {
 			mbtiService.mbti_modify(commandMap.getMap());
 			return mv;
 		} else {
 			return mv;
 		}
+//		return mv;
 	}
-	
-/*	@RequestMapping(value = "/mbti/result")
-	public ModelAndView mbti_result(CommandMap commandMap, HttpServletRequest request, HttpSession session) throws Exception {
-		ModelAndView mv = new ModelAndView("mbti_result");
-		
+
+
+	@RequestMapping(value = "/mbti/result")
+	public ModelAndView mbti_modify(CommandMap commandMap, HttpServletRequest request, HttpSession session) throws Exception {
+		ModelAndView mv = new ModelAndView("/mbti/result");
+
 //		String ID = (String) session.getAttribute("loginId");
 //		commandMap.getMap().put("ID", ID);
-		
+
+		session = request.getSession(false);
+
 		return mv;
-	}*/
+	}
 }

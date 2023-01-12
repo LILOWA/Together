@@ -31,30 +31,19 @@
 	</article> 
 	
 	<article class="question">
-		<div class="progress mt-5" role="progressbar" aria-label="Example 2px high" aria-valuenow="25" aria-valuemin="0" aria-valuemax="100" style="height: 2px">
-			<div class="progress-bar bg-dark" style="width: calc(100/12*0%);"></div>
-		</div>
-		
-		<h4 id="title" class="text-center mt-5">문제</h4>
-			<input type="hidden" id="type" value="EI">
-		
-		<button id="A" type="button" class="btn btn-outline-dark mt-5">A</button>
-		<button id="B" type="button" class="btn btn-outline-dark mt-5">B</button>
-		
-		<img alt="bgImg" src="resources/image/mbti/bgImg.png" style="width: 400px; margin-top: 45px;">
-	</article>
-	
-	<article class="result">
-		<h2 id="mbti" class="text-center mt-5">MBTI</h2>
-		<img id="mbtiImg" alt="mbtiImg" src="resources/image/mbti/ENFJ.jpg">
-		<img id="explainImg" class="mt-3" alt="explainImg" src="resources/image/mbti/ENFJ0.JPG">
-		
-		<button type="button" class="btn btn-dark btn-lg mt-3" onclick="window.location.reload()">테스트 다시 하기</button>
-		<button type="button" class="btn btn-dark btn-lg mt-1">테스트 결과 저장</button><br><br>
-		
-		<!-- 공유 버튼 --> 
-		<h3 class="mt-5 text-center"">* 공유하기 *</h3><br>
-		<div class="addthis_inline_share_toolbox_j6rc share"></div><br><br><br>
+		<form class="questionForm">
+			<div class="progress mt-5" role="progressbar" aria-label="Example 2px high" aria-valuenow="25" aria-valuemin="0" aria-valuemax="100" style="height: 2px">
+				<div class="progress-bar bg-dark" style="width: calc(100/12*0%);"></div>
+			</div>
+			
+			<h4 id="title" class="text-center mt-5">문제</h4>
+				<input type="hidden" id="type" value="EI">
+			
+			<button id="A" type="button" class="btn btn-outline-dark mt-5">A</button>
+			<button id="B" type="button" class="btn btn-outline-dark mt-5">B</button>
+			
+			<img alt="bgImg" src="resources/image/mbti/bgImg.png" style="width: 400px; margin-top: 45px;">
+		</form>
 	</article>
 	
 		<input type="hidden" id="EI" value="0">
@@ -106,7 +95,7 @@
 		}
 		
 		/* 테스트 결과 */
-		var result = {
+/*		var result = {
 				"ENFJ" :  {"mbti":"ENFJ", "explainImg":"resources/image/mbti/ENFJ0.JPG", "mbtiImg":"resources/image/mbti/ENFJ.jpg"},
 				"ENFP" :  {"mbti":"ENFP", "explainImg":"resources/image/mbti/ENFP0.JPG", "mbtiImg":"resources/image/mbti/ENFP.jpg"},
 				"ENTJ" :  {"mbti":"ENTJ", "explainImg":"resources/image/mbti/ENTJ0.JPG", "mbtiImg":"resources/image/mbti/ENTJ.jpg"},
@@ -124,14 +113,14 @@
 				"ISTJ" :  {"mbti":"ISTJ", "explainImg":"resources/image/mbti/ISTJ0.JPG", "mbtiImg":"resources/image/mbti/ISTJ.jpg"},
 				"ISTP" :  {"mbti":"ISTP", "explainImg":"resources/image/mbti/ISTP0.JPG", "mbtiImg":"resources/image/mbti/ISTP.jpg"}
 		
-		}
+		}*/
 		
 		var num = 1; 	//현재 문제 번호
 		
 		// 다음 문제로 넘어가는 함수
 		function next() {
 			if (num == 13) {				//12번이 지나 13번이 될 경우
-				$(".question").hide();		//question 클래스가 숨겨지고
+/*				$(".question").hide();		//question 클래스가 숨겨지고
 				$(".result").show();		//result 클래스가 나타남
 				$(".container").css("background-color", "#FFFFFF");
 
@@ -143,7 +132,19 @@
 
 				$("#mbti").html(result[mbti]["mbti"]);
 				$("#mbtiImg").attr("src", result[mbti]["mbtiImg"]);
-				$("#explainImg").attr("src", result[mbti]["explainImg"]);
+				$("#explainImg").attr("src", result[mbti]["explainImg"]);*/
+				
+				var mbti = "";
+				($("#EI").val() > 1) ? mbti = mbti + "E" : mbti = mbti + "I";
+				($("#NS").val() > 1) ? mbti += "N" : mbti += "S";		
+				($("#TF").val() > 1) ? mbti += "T" : mbti += "F";
+				($("#JP").val() > 1) ? mbti += "J" : mbti += "P";
+				
+				alert(mbti);
+				
+				$(".questionForm").attr("action", "/mbti/result.paw");
+				$(".questionForm").submit();
+				//result에 mbti값을 넘겨야함
 
 			} else {
 
