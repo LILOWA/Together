@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="search">
+
+	<select id="search_board_list" parameterType="hashmap" resultType="hashmap">
+		<include refid="common.pagingPre"/> 
+		
+		<![CDATA[
+			SELECT
+				 BC_IDX, BC_TITLE, BC_MOD_DATE, BC_WRITER_ID
+			FROM
+				 BOARD_COMM
+			ORDER BY BC_IDX DESC
+		]]>
+		
+		<include refid="common.pagingPost"/> 
+	</select>
+
+</mapper>

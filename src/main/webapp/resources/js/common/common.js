@@ -83,7 +83,7 @@ function move(target, ...param){
 }
 
 /* ===================== 페이징 이동 및 세팅 함수 ===================== */
-function set_paging(){
+/*function set_paging(){
 	let p = $(".paging");
 	if(isNull(p[0])){ return false; }//페이징이 없으면 함수 종료
 	p.children().on("click", function(){//페이징의 자식 요소를 클릭하면
@@ -92,7 +92,7 @@ function set_paging(){
 		form.querySelector("input[name='currentPageNo']").value = this.innerHTML;
 		form.submit();//폼 제출
 	});
-}
+}*/
 
 /* ===================== 테이블 펼쳐보기 세팅 함수 ===================== */
 function set_toggle_ellip(){
