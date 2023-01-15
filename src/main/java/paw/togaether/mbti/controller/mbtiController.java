@@ -1,6 +1,7 @@
 package paw.togaether.mbti.controller;
 
 import javax.annotation.Resource;
+
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 
@@ -12,6 +13,10 @@ import org.springframework.web.servlet.ModelAndView;
 
 import paw.togaether.common.domain.CommandMap;
 import paw.togaether.mbti.service.mbtiService;
+
+	/* 23.01.11 이소영: MBTI 테스트 서버단, 프론트단 작성
+	 * 23.01.13 이소영: MBTI test/ result jsp 분리 작성, 기능 구현
+	*/
 
 @Controller 		// 웹 클라이언트에서 들어온 요청을 해당 비지니스 로직 호출, 수행결과와 함께 응답해주는 Dispatcher
 public class mbtiController {
