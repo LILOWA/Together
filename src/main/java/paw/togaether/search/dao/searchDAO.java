@@ -12,7 +12,7 @@ public class searchDAO extends AbstractDAO {
 
 	@SuppressWarnings("unchecked")
 	public List<Map<String, Object>> search_board_list(Map<String, Object> map) throws Exception {
-		return (List<Map<String, Object>>)selectList("search.search_board_list", map);
+		return (List<Map<String, Object>>)selectPagingList("search.search_board_list", map);
 	}
 	
 }

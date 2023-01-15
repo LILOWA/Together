@@ -21,43 +21,43 @@ public class searchController {
 
 	@Resource(name = "searchService")
 	private searchService searchService;
-/*	@Resource(name = "boardService")
-	private BoardService boardService;
+	/*
+	 * @Resource(name = "boardService") private BoardService boardService;
+	 * 
+	 * 
+	 * @RequestMapping(value = "/main0") public ModelAndView
+	 * boardSearchList(CommandMap commandMap, HttpServletRequest request) throws
+	 * Exception { ModelAndView mv = new ModelAndView("/main/search");
+	 * List<Map<String, Object>> list =
+	 * searchService.search_board_list(commandMap.getMap());
+	 * 
+	 * mv.addObject("list", list); //글번호,제목,조회수,작성자,작성날짜 담아줌
+	 * 
+	 * return mv; }
+	 */
 
-	
 	@RequestMapping(value = "/main0")
-	public ModelAndView boardSearchList(CommandMap commandMap, HttpServletRequest request) throws Exception {
+	public ModelAndView open_search_list(CommandMap commandMap) throws Exception {
 		ModelAndView mv = new ModelAndView("/main/search");
+
+		return mv;
+	}
+
+	@RequestMapping(value = "/Search0")
+	public ModelAndView select_search_list(CommandMap commandMap) throws Exception {
+		ModelAndView mv = new ModelAndView("jsonView");
+
 		List<Map<String, Object>> list = searchService.search_board_list(commandMap.getMap());
-
-		mv.addObject("list", list); //글번호,제목,조회수,작성자,작성날짜 담아줌
-
-		return mv;
-	}
-*/
-	
-	@RequestMapping(value = "/main0")
-	public ModelAndView boardSearchList(CommandMap commandMap, HttpServletRequest request) throws Exception {
-		ModelAndView mv = new ModelAndView("/main/search");
-
-		return mv;
-	}
-	
-	@RequestMapping(value = "/search")
-	public ModelAndView search_list (CommandMap commandMap, HttpServletRequest request) throws Exception {
-		ModelAndView mv = new ModelAndView("jsnoView");
 		
-		List<Map<String, Object>> list = searchService.search_board_list(commandMap.getMap());
 		mv.addObject("list", list);
 		
-		if(list.size() > 0){
+		if (list.size() > 0) {
 			mv.addObject("TOTAL", list.get(0).get("TOTAL_COUNT"));
-		}
-		else{
+		} else {
 			mv.addObject("TOTAL", 0);
 		}
-		
+
 		return mv;
 	}
-	
+
 }

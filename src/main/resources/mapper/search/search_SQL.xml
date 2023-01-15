@@ -5,16 +5,13 @@
 
 	<select id="search_board_list" parameterType="hashmap" resultType="hashmap">
 		<include refid="common.pagingPre"/> 
-		
 		<![CDATA[
-			SELECT
-				 BC_IDX, BC_TITLE, BC_MOD_DATE, BC_WRITER_ID
-			FROM
-				 BOARD_COMM
+			SELECT BC_IDX, BC_TITLE, BC_MOD_DATE, BC_WRITER_ID
+			FROM BOARD_COMM
+			WHERE BC_DEL_GB = 'N'
 			ORDER BY BC_IDX DESC
 		]]>
-		
-		<include refid="common.pagingPost"/> 
+		<include refid="common.pagingPost"/>
 	</select>
 
 </mapper>
