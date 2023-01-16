@@ -1,13 +1,13 @@
-<%@ page language="java" contentType="text/html; charset=UTF-8"
-	pageEncoding="UTF-8"%>
-<%@ include file="/WEB-INF/include/user-header.jspf"%>
-<main class="layoutCenter">
-	<section class="searchnotice">
+<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 
-		<!-- board list area -->
-		<div id="board-list">
+<%@ include file="/WEB-INF/include/user-header.jspf" %>
+<script src="/resources/js/search/search.js"></script>
+<main class="layoutCenter">
+	<section class="notice">
+		<div class="page-title">
 			<div class="container">
-				<table class="board-table">
+				<h2>게시판 목록</h2>
+				<table class="board_list">
 					<colgroup>
 						<col width="10%" />
 						<col width="*" />
@@ -26,64 +26,82 @@
 
 					</tbody>
 				</table>
+
 				<div id="PAGE_NAVI"></div>
 				<input type="hidden" id="PAGE_INDEX" name="PAGE_INDEX" /> <br /> <a
 					href="#this" class="btn" id="write">글쓰기</a>
+
+				<form id="commonForm" name="commonForm"></form>
 			</div>
 		</div>
 	</section>
-<form id="commonForm" name="commonForm"></form>
-
+</main>
+<script src="http://code.jquery.com/jquery-latest.js"></script> 
 	<script type="text/javascript">
-	function fn_selectBoardList(pageNo){
-		var comAjax = new ComAjax();
-		comAjax.setUrl("<c:url value='/main0.paw' />");
-		comAjax.setCallback("fn_selectBoardListCallback");
-		comAjax.addParam("PAGE_INDEX",$("#PAGE_INDEX").val());
-		comAjax.addParam("PAGE_ROW", 10);
-		comAjax.addParam("IDX_FE", $("#IDX_FE").val());
-		comAjax.ajax();
-	}
-	
-	function fn_selectBoardListCallback(data){
-		var total = data.TOTAL;
-		var body = $("table>tbody");
-		body.empty();
-		if(total == 0){
-			var str = "<tr>" + 
-							"<td colspan='4'>조회된 결과가 없습니다.</td>" + 
-						"</tr>";
-			body.append(str);
-		}
-		else{
-			var params = {
-				divId : "PAGE_NAVI",
-				pageIndex : "PAGE_INDEX",
-				totalCount : total,
-				eventName : "fn_selectBoardList"
-			};
-			gfn_renderPaging(params);
-			
-			var str = "";
-			$.each(data.list, function(key, value){
-				str += "<tr>" + 
-							"<td>" + value.BC_IDX + "</td>" + 
-							"<td class='title'>" +
-								"<a href='#this' name='BC_TITLE'>" + value.BC_TITLE + "</a>" +
-								"<input type='hidden' name='title' id='BC_IDX' value=" + value.BC_IDX + ">" + 
-							"</td>" +
-							"<td>" + value.BC_MOD_DATE + "</td>" + 
-							"<td>" + value.BC_WRITER_ID + "</td>" + 
-						"</tr>";
-			});
-			body.append(str);
-			
+	$(document).ready(function(){
+		fn_selectBoardList(1);
 			$("a[name='title']").on("click", function(e){ //제목 
 				e.preventDefault();
 				fn_openBoardDetail($(this));
 			});
-		}
+		});
+	
+	function fn_openBoardDetail(obj){			
+		var comSubmit = new ComSubmit();
+		comSubmit.setUrl("<c:url value='/board_detail.paw' />");
+		comSubmit.addParam("BC_IDX", obj.parent().find("#IDX").val());
+		comSubmit.submit();
 	}
-</script>	
-</main>
-</html>
+	
+		function fn_selectBoardList(pageNo){
+			var comAjax = new ComAjax();
+			comAjax.setUrl("<c:url value='/search0.paw' />");
+			comAjax.setCallback("fn_selectBoardListCallback");
+			comAjax.addParam("PAGE_INDEX",$("#PAGE_INDEX").val());
+			comAjax.addParam("PAGE_ROW", 10);
+			comAjax.addParam("IDX_FE", $("#IDX_FE").val());
+			comAjax.ajax();
+		}
+		
+		function fn_selectBoardListCallback(data){
+			var total = data.TOTAL;
+			var body = $("table>tbody");
+			body.empty();
+			
+			if(total == 0){
+				var str = "<tr>" + 
+								"<td colspan='4'>조회된 결과가 없습니다.</td>" + 
+							"</tr>";
+				body.append(str);
+			
+			} else{
+				var params = {
+					divId : "PAGE_NAVI",
+					pageIndex : "PAGE_INDEX",
+					totalCount : total,
+					eventName : "fn_selectBoardList"
+				};
+				gfn_renderPaging(params);
+				
+				var str = "";
+				$.each(data.list, function(key, value){
+					str += "<tr>" + 								// class='use_move' data-href='/board_detail.paw' onclick='move(this,'BC_IDX:"+value.BC_IDX+"')'
+								"<td align='center'>" + value.BC_IDX + "</td>" + 
+								"<td class='title'>" +
+									"<a href='#this' name='title'>" + value.BC_TITLE + "</a>" +
+									"<input type='hidden' name='title' id='IDX' value=" + value.BC_IDX + ">" + 
+								"</td>" +
+								"<td align='center'>" + value.BC_WRITER_ID + "</td>" + 
+								"<td align='center'>" + value.BC_MOD_DATE + "</td>" + 
+							"</tr>";
+				});
+				body.append(str);
+				
+				$("a[name='title']").on("click", function(e){ //제목 
+					e.preventDefault();
+					fn_openBoardDetail($(this));
+				});
+			
+			}
+		}
+	</script>	
