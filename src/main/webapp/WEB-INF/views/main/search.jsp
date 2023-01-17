@@ -1,12 +1,27 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 
 <%@ include file="/WEB-INF/include/user-header.jspf" %>
-<script src="/resources/js/search/search.js"></script>
+<script src="/resources/js/paging/paging.js"></script>
+
 <main class="layoutCenter">
 	<section class="notice">
 		<div class="page-title">
 			<div class="container">
-				<h2>게시판 목록</h2>
+
+				<form action="">
+					<select style="width: 80px;" class="form-control" name="searchNum"
+						id="searchNum">
+						<option value="0">제목</option>
+						<option value="1">내용</option>
+					</select> <input class="form-control" type="text" name="isSearch"
+						id="isSearch" style="width: 190px;" /> <span
+						class="input-group-btn">
+						<button type="submit" class="btn btn-primary">
+							<i class="fa fa-search"></i>
+						</button>
+					</span>
+				</form><br>
+
 				<table class="board_list">
 					<colgroup>
 						<col width="10%" />
@@ -59,7 +74,7 @@
 			comAjax.setCallback("fn_selectBoardListCallback");
 			comAjax.addParam("PAGE_INDEX",$("#PAGE_INDEX").val());
 			comAjax.addParam("PAGE_ROW", 10);
-			comAjax.addParam("IDX_FE", $("#IDX_FE").val());
+			//comAjax.addParam("IDX_FE", $("#IDX_FE").val());
 			comAjax.ajax();
 		}
 		
@@ -84,7 +99,7 @@
 				gfn_renderPaging(params);
 				
 				var str = "";
-				$.each(data.list, function(key, value){
+				$.each(data.boardSearchList, function(key, value){
 					str += "<tr>" + 								// class='use_move' data-href='/board_detail.paw' onclick='move(this,'BC_IDX:"+value.BC_IDX+"')'
 								"<td align='center'>" + value.BC_IDX + "</td>" + 
 								"<td class='title'>" +

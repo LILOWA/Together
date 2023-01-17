@@ -21,7 +21,7 @@
 			SELECT ROW_NUMBER() OVER (ORDER BY BC_IDX DESC) RNUM, BC_IDX, BC_TITLE, TO_CHAR(BC_MOD_DATE, 'YYYY-MM-DD HH24:MI:SS') AS BC_MOD_DATE, BC_WRITER_ID
 			FROM BOARD_COMM
 			WHERE BC_TITLE LIKE '%' || #{isSearch} || '%'
-			WHERE BC_DEL_GB = 'N'
+			AND BC_DEL_GB = 'N'
 			ORDER BY BC_IDX DESC
 		]]>
 		<include refid="common.pagingPost"/>
@@ -34,7 +34,7 @@
 			SELECT ROW_NUMBER() OVER (ORDER BY BC_IDX DESC) RNUM, BC_IDX, BC_TITLE, TO_CHAR(BC_MOD_DATE, 'YYYY-MM-DD HH24:MI:SS') AS BC_MOD_DATE, BC_WRITER_ID
 			FROM BOARD_COMM
 			WHERE BC_WRITER_ID LIKE '%' || #{isSearch} || '%'
-			WHERE BC_DEL_GB = 'N'
+			AND BC_DEL_GB = 'N'
 			ORDER BY BC_IDX DESC
 		]]>
 		<include refid="common.pagingPost"/>
