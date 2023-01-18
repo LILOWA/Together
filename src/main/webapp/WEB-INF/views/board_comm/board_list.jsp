@@ -9,7 +9,7 @@
 </head>
 <script>
 /* 이 페이지에서만 적용되는 제이쿼리라 따로 빼놈 - 등록 완료 후 이벤트 처리 */
-$(function() {
+$(function() { 
 	if ('${success}'){
 		toastr.success('${success}');
 		

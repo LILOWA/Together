@@ -2,6 +2,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 
 <%@ include file="/WEB-INF/include/common-head.jspf" %>
+<link rel="stylesheet" type="text/css" href="/resources/css/common/layout.css"/>
 <script src="/resources/js/paging/paging.js"></script>
 
 <div>
@@ -10,11 +11,11 @@
 			<tr>
 				<th scope="col">글번호</th>
 				<th scope="col">제목</th>
-				<th scope="col">조회수</th>
+				<!-- <th scope="col">조회수</th> -->
 				<th scope="col">작성일</th>
 			</tr>
 		</thead>
-		<tbody class="board">
+		<tbody class="place">
 
 		</tbody>
 	</table>
@@ -26,8 +27,6 @@
 <br />
 
 <form id="commonForm" name="commonForm"></form>
-<script src="http://code.jquery.com/jquery-latest.js"></script>
-<!-- <script type="text/javascript" src="/resources/js/main/search_board.js"></script>-->
 <script type="text/javascript">
 $(document).ready(function(){
 	fn_selectBoardList(1);
@@ -41,7 +40,7 @@ $(document).ready(function(){
 	function fn_selectBoardList(pageNo) {
 		var comAjax = new ComAjax();
 
-		comAjax.setUrl("<c:url value='/pagingBoard.paw' />");
+		comAjax.setUrl("<c:url value='/pagingBoard3.paw' />");
 		comAjax.setCallback("fn_selectBoardListCallback");
 
 		comAjax.addParam("PAGE_INDEX", $("#PAGE_INDEX").val());
@@ -55,7 +54,7 @@ $(document).ready(function(){
 	
 	function fn_selectBoardListCallback(data) {
 		var total = data.TOTAL;
-		var body = $(".board");
+		var body = $(".place");
 		body.empty();
 		
 		if (total == 0) {
@@ -76,13 +75,13 @@ $(document).ready(function(){
 			$.each(data.boardSearchList,
 							function(key, value) {
 								str += "<tr>"+ 
-											"<td align='center'>"+ value.BC_IDX + "</td>"+ 
+											"<td align='center'>"+ value.PL_IDX + "</td>"+ 
 											"<td class='title'>"+ 
-												"<a href='#this' name='title'>"+ value.BC_TITLE+ "</a>"+ 
-												"<input type='hidden' name='title' id='IDX' value=" + value.BC_IDX + ">"+ 
+												"<a href='#this' name='title'>"+ value.PL_NAME+ "</a>"+ 
+												"<input type='hidden' name='title' id='IDX' value=" + value.PL_IDX + ">"+ 
 											"</td>" + 
-											"<td align='center'>"+ value.BC_WRITER_ID + "</td>"+ 
-											"<td align='center'>"+ value.BC_MOD_DATE + "</td>"+ 
+											/* "<td align='center'>"+ value.BC_WRITER_ID + "</td>"+  */
+											"<td align='center'>"+ value.PL_MOD_DATE + "</td>"+ 
 										"</tr>";
 							});
 			body.append(str);
@@ -93,14 +92,12 @@ $(document).ready(function(){
 				fn_openBoardDetail($(this));
 			});
 			
-
 			function fn_openBoardDetail(obj) {
 				var comSubmit = new ComSubmit();
 				comSubmit.setUrl("<c:url value='/board/detail.paw' />");
-				comSubmit.addParam("BC_IDX", obj.parent().find("#IDX").val());
+				comSubmit.addParam("PL_IDX", obj.parent().find("#IDX").val());
 				comSubmit.submit();
 			}
-
 	}
 </script>
 </html>

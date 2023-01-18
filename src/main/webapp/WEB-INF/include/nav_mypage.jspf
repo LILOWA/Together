@@ -1,6 +1,6 @@
 <%@ page pageEncoding="UTF-8" %>
  
-<!-- 마이페이지 네비게이션 -->
+<!-- 마이페이지 네비게이션 --> 
 <nav class="mypage">
 	<div class="nav_wrap slim_scroll">
 		<h2><a href="">마이페이지</a></h2>

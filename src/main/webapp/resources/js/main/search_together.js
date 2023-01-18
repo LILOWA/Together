@@ -17,7 +17,7 @@ $(document).ready(function(){
 	function fn_selectBoardList(pageNo) {
 		var comAjax = new ComAjax();
 	
-		comAjax.setUrl("<c:url value='/pagingBoard2.paw' />");
+		comAjax.setUrl("<c:url value='/pagingBoard2.paw'>");
 		comAjax.setCallback("fn_selectBoardListCallback");
 	
 		comAjax.addParam("PAGE_INDEX", $("#PAGE_INDEX").val());

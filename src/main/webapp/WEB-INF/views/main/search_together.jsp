@@ -1,8 +1,8 @@
-<html>
+<html  lang="utf-8">
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 
-<%@ include file="/WEB-INF/include/user-header.jspf" %>
-<script src="/resources/js/paging/paging2.js"></script>
+<%@ include file="/WEB-INF/include/common-head.jspf" %>
+<script src="/resources/js/paging/paging.js"></script>
 
 			<div >
 				<table class="card_table" id="together_list">
@@ -14,7 +14,7 @@
 							<th scope="col">작성일</th>
 						</tr>
 					</thead>
-					<tbody>
+					<tbody class="together">
 
 					</tbody>
 				</table>
@@ -24,30 +24,20 @@
 			<input type="hidden" id="PAGE_INDEX" name="PAGE_INDEX" /> <br />
 
 		<form id="commonForm" name="commonForm"></form>
-<script src="https://code.jquery.com/jquery-3.5.1.min.js" ></script>> 
-<script type="text/javascript" src="resources/js/main/search_together.js"></script>
-	<!-- <script type="text/javascript">
+	<script type="text/javascript">
 	$(document).ready(function(){
-		fn_selectBoardList(1);
+		fn_selectBoardList2(1);
 			$("a[name='title']").on("click", function(e){ //제목 
 				e.preventDefault();
-				fn_openBoardDetail($(this));
+				fn_openBoardDetail2($(this));
 			});
 		});
-	
-	
-		function fn_openBoardDetail(obj) {
-			var comSubmit = new ComSubmit();
-			comSubmit.setUrl("<c:url value='/together/detail.paw' />");
-			comSubmit.addParam("TO_IDX", obj.parent().find("#IDX").val());
-			comSubmit.submit();
-		}
 
-		function fn_selectBoardList(pageNo) {
+		function fn_selectBoardList2(pageNo) {
 			var comAjax = new ComAjax();
 
 			comAjax.setUrl("<c:url value='/pagingBoard2.paw' />");
-			comAjax.setCallback("fn_selectBoardListCallback");
+			comAjax.setCallback("fn_selectBoardListCallback2");
 
 			comAjax.addParam("PAGE_INDEX", $("#PAGE_INDEX").val());
 			comAjax.addParam("PAGE_ROW", 10);
@@ -59,24 +49,24 @@
 		}
 		
 
-		function fn_selectBoardListCallback(data) {
-			var total = data.TOTAL;
-			var body = $("table>tbody");
+		function fn_selectBoardListCallback2(data) {
+			var total2 = data.TOTAL;
+			var body = $(".together");
 			body.empty();
 			
-			if (total == 0) {
+			if (total2 == 0) {
 				var str = "<tr align='center'>" + "<td colspan='4'>조회된 결과가 없습니다.</td>"
 						+ "</tr>";
 				body.append(str);
 
 			} else {
-				var params = {
+				var params2 = {
 					divId : "PAGE_NAVI",
 					pageIndex : "PAGE_INDEX",
-					totalCount : total,
-					eventName : "fn_selectBoardList"
+					totalCount : total2,
+					eventName : "fn_selectBoardList2"
 				};
-				gfn_renderPaging(params);
+				gfn_renderPaging(params2);
 
 				var str = "";
 				$.each(data.togetherSearchList,
@@ -96,8 +86,15 @@
 
 				$("a[name='title']").on("click", function(e) { //제목 
 					e.preventDefault();
-					fn_openBoardDetail($(this));
+					fn_openBoardDetail2($(this));
 				});
+				
+				function fn_openBoardDetail2(obj) {
+					var comSubmit = new ComSubmit();
+					comSubmit.setUrl("<c:url value='/together/detail.paw' />");
+					comSubmit.addParam("TO_IDX", obj.parent().find("#IDX").val());
+					comSubmit.submit();
+				}
 		}
-	</script>	 -->
+	</script>
 </html>

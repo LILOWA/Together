@@ -7,7 +7,7 @@
 		<script src="/resources/js/board_comm/board_comm.js"></script>
 	</head>
 <style>
-
+ 
 .title1{
 margin-top: 10px;
 margin-left: 10px;

@@ -8,7 +8,7 @@
 	<script>
 		tailwind.config = {
 			important: true,
-		}
+		} 
 	</script>
 <title>회원가입</title>
 </head>

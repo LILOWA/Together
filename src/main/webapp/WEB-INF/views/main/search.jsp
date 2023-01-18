@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
-
+<%@ include file="/WEB-INF/include/user-header.jspf" %>
+<script src="/resources/js/paging/paging.js"></script>
 
 <main class="layoutCenter">
 	<div class="container2">
@@ -19,7 +20,7 @@
 			</form>
 		</div>
 		<br>
-		
+		 
 		<div>
 			<div class="tab_radio">
 				<input type="radio" id="tab_a" name="tab" value="a" checked> <label for="tab_a">게시판</label> 
@@ -27,10 +28,20 @@
 				<input type="radio" id="tab_b" name="tab" value="b"> 		 <label for="tab_b">시설</label>
 			</div>
 			<br>
+			
 			<div>
-			<jsp:include page="search_together.jsp" ></jsp:include>
+				<div>
+					<jsp:include page="/search_board.paw" ></jsp:include>
+				</div>
+				<br>
+				<div>
+					<jsp:include page="/search_together.paw"></jsp:include>
+				</div>
 			</div>
-			<div>
-			<jsp:include page="search_board.jsp" ></jsp:include>
-			</div>
-			</div></div></main>
+			
+		</div>
+			<div id="PAGE_NAVI"></div>
+				<input type="hidden" id="PAGE_INDEX" name="PAGE_INDEX" />
+				<br />
+	</div>
+</main>

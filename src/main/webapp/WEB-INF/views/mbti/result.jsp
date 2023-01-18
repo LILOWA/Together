@@ -9,7 +9,7 @@
 
 <main class="layoutCenter">
 <div class="container2">
-
+ 
 	<article class="result">
 		<!-- <h2 id="mbti" class="text-center mt-5">MBTI</h2>
 		<img id="mbtiImg" alt="mbtiImg" src="resources/image/mbti/ENFJ.jpg">

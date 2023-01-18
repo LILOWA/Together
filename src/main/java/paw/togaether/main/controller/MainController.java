@@ -21,11 +21,32 @@ public class MainController {
 	
 	@Resource(name = "mainService")
 	private MainService mainService;
-
-	@Resource(name = "boardService")
-	private BoardService boardService;
-
 	
+	@RequestMapping(value = "/search")
+	public ModelAndView search(CommandMap commandMap, HttpServletRequest request,
+			@RequestParam(value = "keyword", defaultValue = "") String keyword,
+			@RequestParam(value = "searchType", defaultValue = "") String searchType) throws Exception {
+		ModelAndView mv = new ModelAndView("main/search");
+		
+		request.setAttribute("searchType", searchType);
+		request.setAttribute("keyword", keyword);
+		
+		return mv;
+	}
+	
+	
+	@RequestMapping(value = "/search_board")
+	public ModelAndView boardSearch(CommandMap commandMap, HttpServletRequest request,
+			@RequestParam(value = "keyword", defaultValue = "") String keyword,
+			@RequestParam(value = "searchType", defaultValue = "") String searchType) throws Exception {
+		ModelAndView mv = new ModelAndView("main/search_board");
+		
+		request.setAttribute("searchType", searchType);
+		request.setAttribute("keyword", keyword);
+		
+		return mv;
+	}
+
 	@RequestMapping(value = "/pagingBoard")
 	public ModelAndView boardSearchList(CommandMap commandMap, HttpServletRequest request,
 			@RequestParam(value = "keyword", defaultValue = "") String keyword,
@@ -41,35 +62,22 @@ public class MainController {
 			} else {
 				mv.addObject("TOTAL", 0);
 			}
-
+			
 		return mv;
 	}
-	@RequestMapping(value = "/search_board")
-	public ModelAndView boardSearch(CommandMap commandMap, HttpServletRequest request,
+	
+	
+	@RequestMapping(value = "/search_together")
+	public ModelAndView togetherSearch(CommandMap commandMap, HttpServletRequest request,
 			@RequestParam(value = "keyword", defaultValue = "") String keyword,
 			@RequestParam(value = "searchType", defaultValue = "") String searchType) throws Exception {
-		ModelAndView mv = new ModelAndView("main/search_board");
+		ModelAndView mv = new ModelAndView("main/search_together");
 		
 		request.setAttribute("searchType", searchType);
 		request.setAttribute("keyword", keyword);
 		
 		return mv;
-
 	}
-	
-	@RequestMapping(value = "/search")
-	public ModelAndView search(CommandMap commandMap, HttpServletRequest request,
-			@RequestParam(value = "keyword", defaultValue = "") String keyword,
-			@RequestParam(value = "searchType", defaultValue = "") String searchType) throws Exception {
-		ModelAndView mv = new ModelAndView("main/search");
-		
-		request.setAttribute("searchType", searchType);
-		request.setAttribute("keyword", keyword);
-		
-		return mv;
-
-	}
-	
 	
 	@RequestMapping(value = "/pagingBoard2")
 	public ModelAndView togetherSearchList(CommandMap commandMap, HttpServletRequest request,
@@ -91,17 +99,17 @@ public class MainController {
 		return mv;
 	}
 
-	@RequestMapping(value = "/search_together")
-	public ModelAndView togetherSearch(CommandMap commandMap, HttpServletRequest request,
+	
+	@RequestMapping(value = "/search_place")
+	public ModelAndView plceSearch(CommandMap commandMap, HttpServletRequest request,
 			@RequestParam(value = "keyword", defaultValue = "") String keyword,
 			@RequestParam(value = "searchType", defaultValue = "") String searchType) throws Exception {
-		ModelAndView mv = new ModelAndView("main/search_together");
+		ModelAndView mv = new ModelAndView("main/search_place");
 		
 		request.setAttribute("searchType", searchType);
 		request.setAttribute("keyword", keyword);
 		
 		return mv;
-
 	}
 	
 	@RequestMapping(value = "/pagingBoard3")

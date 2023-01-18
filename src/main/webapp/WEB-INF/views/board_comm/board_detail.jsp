@@ -15,7 +15,7 @@ color: black;
 background-color: #f6eeec;
 border-radius: 2em 2em 2em 2em;
   padding: 6px;
-} 
+}  
 .title2{
 margin-top: 4px;
 }
