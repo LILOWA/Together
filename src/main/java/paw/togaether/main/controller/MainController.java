@@ -79,7 +79,7 @@ public class MainController {
 		return mv;
 	}
 	
-	@RequestMapping(value = "/pagingBoard2")
+	@RequestMapping(value = "/pagingTogether")
 	public ModelAndView togetherSearchList(CommandMap commandMap, HttpServletRequest request,
 			@RequestParam(value = "keyword", defaultValue = "") String keyword,
 			@RequestParam(value = "searchType", defaultValue = "") String searchType) throws Exception {
@@ -112,7 +112,7 @@ public class MainController {
 		return mv;
 	}
 	
-	@RequestMapping(value = "/pagingBoard3")
+	@RequestMapping(value = "/pagingPlace")
 	public ModelAndView placeSearchList(CommandMap commandMap, HttpServletRequest request,
 			@RequestParam(value = "keyword", defaultValue = "") String keyword,
 			@RequestParam(value = "searchType", defaultValue = "") String searchType) throws Exception {

@@ -7,13 +7,6 @@ $(document).ready(function(){
 	});
 
 
-	function fn_openBoardDetail(obj) {
-		var comSubmit = new ComSubmit();
-		comSubmit.setUrl("<c:url value='/board/detail.paw' />");
-		comSubmit.addParam("BC_IDX", obj.parent().find("#IDX").val());
-		comSubmit.submit();
-	}
-
 	function fn_selectBoardList(pageNo) {
 		var comAjax = new ComAjax();
 
@@ -31,7 +24,7 @@ $(document).ready(function(){
 	
 	function fn_selectBoardListCallback(data) {
 		var total = data.TOTAL;
-		var body = $("table>tbody");
+		var body = $(".board");
 		body.empty();
 		
 		if (total == 0) {
@@ -41,7 +34,7 @@ $(document).ready(function(){
 
 		} else {
 			var params = {
-				divId : "PAGE_NAVI",
+				divId : "PAGE_NAVI_B",
 				pageIndex : "PAGE_INDEX",
 				totalCount : total,
 				eventName : "fn_selectBoardList"
@@ -58,6 +51,7 @@ $(document).ready(function(){
 												"<input type='hidden' name='title' id='IDX' value=" + value.BC_IDX + ">"+ 
 											"</td>" + 
 											"<td align='center'>"+ value.BC_WRITER_ID + "</td>"+ 
+											"<td align='center'>"+ value.BC_WRITER_ID + "</td>"+ 
 											"<td align='center'>"+ value.BC_MOD_DATE + "</td>"+ 
 										"</tr>";
 							});
@@ -68,4 +62,13 @@ $(document).ready(function(){
 				e.preventDefault();
 				fn_openBoardDetail($(this));
 			});
+			
+
+			function fn_openBoardDetail(obj) {
+				var comSubmit = new ComSubmit();
+				comSubmit.setUrl("<c:url value='/board/detail.paw' />");
+				comSubmit.addParam("BC_IDX", obj.parent().find("#IDX").val());
+				comSubmit.submit();
+			}
+
 	}

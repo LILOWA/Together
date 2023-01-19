@@ -70,4 +70,26 @@ public class AbstractDAO {
 		
 		return sqlSession.selectList(queryId, map);
 	}
+	
+	@SuppressWarnings("unchecked")
+	public Object selectPagingList2(String queryId, Object params){
+		pringQueryId(queryId);
+		Map<String,Object> map = (Map<String,Object>)params;
+		
+		String strPageIndex2 = (String)map.get("PAGE_INDEX2");
+		String strPageRow2 = (String)map.get("PAGE_ROW2");
+		int nPageIndex2 = 0;
+		int nPageRow2 = 10;
+		
+		if(StringUtils.isEmpty(strPageIndex2) == false){
+			nPageIndex2 = Integer.parseInt(strPageIndex2)-1;
+		}
+		if(StringUtils.isEmpty(strPageRow2) == false){
+			nPageRow2 = Integer.parseInt(strPageRow2);
+		}
+		map.put("START2", (nPageIndex2 * nPageRow2) + 1);
+		map.put("END2", (nPageIndex2 * nPageRow2) + nPageRow2);
+		
+		return sqlSession.selectList(queryId, map);
+	}
 }

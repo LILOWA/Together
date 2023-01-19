@@ -8,7 +8,7 @@
 	<script src="/resources/js/board_comm/toastr.min.js" integrity="sha512-VEd+nq25CkR676O+pLBnDW09R7VQX9Mdiij052gVCp5yVH3jGtH70Ho/UUv4mJDsEdTvqRCFZg0NKGiojGnUCw==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
     <script src="/resources/js/board_comm/board_comm.js"></script>
  </head>
- 
+  
 
 <main class="layoutCenter">
 		<section class="notice">

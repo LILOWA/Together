@@ -17,7 +17,7 @@ public class MainDAO extends AbstractDAO {
 
 	@SuppressWarnings("unchecked")
 	public List<Map<String, Object>> togetherSearchList(Map<String, Object> map) throws Exception {
-		return (List<Map<String, Object>>) selectPagingList("main.togetherSearchList", map);
+		return (List<Map<String, Object>>) selectPagingList2("main.togetherSearchList", map);
 	}
 	
 	@SuppressWarnings("unchecked")

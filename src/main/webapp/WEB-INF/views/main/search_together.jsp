@@ -2,7 +2,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 
 <%@ include file="/WEB-INF/include/common-head.jspf" %>
-<script src="/resources/js/paging/paging.js"></script>
+<script src="/resources/js/paging/paging2.js"></script>
 
 			<div >
 				<table class="card_table" id="together_list">
@@ -20,8 +20,8 @@
 				</table>
 			</div>
 
-			<div id="PAGE_NAVI"></div>
-			<input type="hidden" id="PAGE_INDEX" name="PAGE_INDEX" /> <br />
+			<div id="PAGE_NAVI_T"></div>
+			<input type="hidden" id="PAGE_INDEX2" name="PAGE_INDEX2" /> <br />
 
 		<form id="commonForm" name="commonForm"></form>
 	<script type="text/javascript">
@@ -36,11 +36,11 @@
 		function fn_selectBoardList2(pageNo) {
 			var comAjax = new ComAjax();
 
-			comAjax.setUrl("<c:url value='/pagingBoard2.paw' />");
+			comAjax.setUrl("<c:url value='/pagingTogether.paw' />");
 			comAjax.setCallback("fn_selectBoardListCallback2");
 
-			comAjax.addParam("PAGE_INDEX", $("#PAGE_INDEX").val());
-			comAjax.addParam("PAGE_ROW", 10);
+			comAjax.addParam("PAGE_INDEX2", $("#PAGE_INDEX2").val());
+			comAjax.addParam("PAGE_ROW2", 10);
 
 			comAjax.addParam("keyword", $('#keyword').val());
 			comAjax.addParam("searchType", $('#searchType').val());
@@ -50,23 +50,23 @@
 		
 
 		function fn_selectBoardListCallback2(data) {
-			var total2 = data.TOTAL;
+			var total = data.TOTAL;
 			var body = $(".together");
 			body.empty();
 			
-			if (total2 == 0) {
+			if (total == 0) {
 				var str = "<tr align='center'>" + "<td colspan='4'>조회된 결과가 없습니다.</td>"
 						+ "</tr>";
 				body.append(str);
 
 			} else {
-				var params2 = {
-					divId : "PAGE_NAVI",
-					pageIndex : "PAGE_INDEX",
-					totalCount : total2,
+				var params = {
+					divId : "PAGE_NAVI_T",
+					pageIndex : "PAGE_INDEX2",
+					totalCount : total,
 					eventName : "fn_selectBoardList2"
 				};
-				gfn_renderPaging(params2);
+				gfn_renderPaging(params);
 
 				var str = "";
 				$.each(data.togetherSearchList,
@@ -84,7 +84,7 @@
 				body.append(str);
 			}
 
-				$("a[name='title']").on("click", function(e) { //제목 
+				$("table[id='together_list']").on("click", function(e) { //제목 
 					e.preventDefault();
 					fn_openBoardDetail2($(this));
 				});

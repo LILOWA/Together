@@ -5,11 +5,13 @@
 <script src="/resources/js/paging/paging.js"></script>
 
 <div>
+<form id="board">
 	<table>
 		<thead>
 			<tr>
 				<th scope="col">글번호</th>
 				<th scope="col">제목</th>
+				<th scope="col">작성자</th>
 				<th scope="col">조회수</th>
 				<th scope="col">작성일</th>
 			</tr>
@@ -18,18 +20,21 @@
 
 		</tbody>
 	</table>
+	</form>
+	<a class="btn submit" href="board/list.paw">더보기</a>
 </div>
 
 
-<div id="PAGE_NAVI"></div>
+<div id="PAGE_NAVI_B"></div>
 <input type="hidden" id="PAGE_INDEX" name="PAGE_INDEX" />
 <br />
 
 <form id="commonForm" name="commonForm"></form>
 <script src="http://code.jquery.com/jquery-latest.js"></script>
-<!-- <script type="text/javascript" src="/resources/js/main/search_board.js"></script>-->
+<!-- <script type="text/javascript" src="resources/"></script> -->
+
 <script type="text/javascript">
-$(document).ready(function(){
+ $(document).ready(function(){
 	fn_selectBoardList(1);
 		$("a[name='title']").on("click", function(e){ //제목 
 			e.preventDefault();
@@ -65,7 +70,7 @@ $(document).ready(function(){
 
 		} else {
 			var params = {
-				divId : "PAGE_NAVI",
+				divId : "PAGE_NAVI_B",
 				pageIndex : "PAGE_INDEX",
 				totalCount : total,
 				eventName : "fn_selectBoardList"
@@ -81,6 +86,7 @@ $(document).ready(function(){
 												"<a href='#this' name='title'>"+ value.BC_TITLE+ "</a>"+ 
 												"<input type='hidden' name='title' id='IDX' value=" + value.BC_IDX + ">"+ 
 											"</td>" + 
+											"<td align='center'>"+ value.BC_WRITER_ID + "</td>"+ 
 											"<td align='center'>"+ value.BC_WRITER_ID + "</td>"+ 
 											"<td align='center'>"+ value.BC_MOD_DATE + "</td>"+ 
 										"</tr>";
@@ -104,4 +110,3 @@ $(document).ready(function(){
 	}
 </script>
 </html>
-<!-- <script type="text/javascript" src="resources/js/main/search_board.js"></script> -->

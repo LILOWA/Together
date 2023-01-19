@@ -1,7 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%> 
 <%@ include file="/WEB-INF/include/user-header.jspf" %>
-<!DOCTYPE>
+<!DOCTYPE> 
 <head>
 	<script src="https://cdn.tailwindcss.com"></script>
 	<script src="https://cdn.tailwindcss.com?plugins=forms"></script>

@@ -3,6 +3,27 @@
 
 <mapper namespace="main">
 	
+ 	<sql id="pagingPre2">
+		<![CDATA[
+   			SELECT 
+			    AAA.*
+			FROM(
+			    SELECT 
+			        COUNT(*) OVER() AS TOTAL_COUNT2,
+			        AA.*
+			    FROM(  
+		]]>
+ 	</sql>
+ 	
+ 	<sql id="pagingPost2">
+ 		<![CDATA[
+ 			 	) AA
+			) AAA
+			WHERE 
+			    AAA.RNUM BETWEEN #{START2} AND #{END2}
+		]]>
+ 	</sql>
+ 	
 	<sql id="searchType_board">
 		<if test="searchType != null">
 			<if test="searchType == 'all'.toString()">
@@ -76,7 +97,7 @@
 	</select>
 	
 	<select id="togetherSearchList" parameterType="hashmap" resultType="hashmap">
-		<include refid="common.pagingPre"/>
+		<include refid="pagingPre2"/>
 		<![CDATA[
 			SELECT 
 				ROW_NUMBER() OVER (ORDER BY TO_IDX DESC) RNUM, 
@@ -94,7 +115,7 @@
 			<![CDATA[
 			ORDER BY TO_IDX DESC
 		]]>
-		<include refid="common.pagingPost"/>
+		<include refid="pagingPost2"/>
 	</select>
 	
 	<select id="placeSearchList" parameterType="hashmap" resultType="hashmap">

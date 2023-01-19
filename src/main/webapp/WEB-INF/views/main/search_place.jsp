@@ -2,46 +2,42 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 
 <%@ include file="/WEB-INF/include/common-head.jspf" %>
-<link rel="stylesheet" type="text/css" href="/resources/css/common/layout.css"/>
-<script src="/resources/js/paging/paging.js"></script>
+<script src="/resources/js/paging/paging2.js"></script>
 
-<div>
-	<table>
-		<thead>
-			<tr>
-				<th scope="col">글번호</th>
-				<th scope="col">제목</th>
-				<!-- <th scope="col">조회수</th> -->
-				<th scope="col">작성일</th>
-			</tr>
-		</thead>
-		<tbody class="place">
+		<div >
+			<table class="card_table" id="place_list">
+				<thead>
+					<tr>
+						<th scope="col">제목 [지역]</th>
+						<th scope="col">내용</th>
+						<th scope="col">작성자</th>
+						<th scope="col">작성일</th>
+					</tr>
+				</thead>
+				<tbody class="place">
 
-		</tbody>
-	</table>
-</div>
+				</tbody>
+			</table>
+		</div>
 
+		<div id="PAGE_NAVI"></div>
+		<input type="hidden" id="PAGE_INDEX" name="PAGE_INDEX" /> <br />
 
-<div id="PAGE_NAVI"></div>
-<input type="hidden" id="PAGE_INDEX" name="PAGE_INDEX" />
-<br />
-
-<form id="commonForm" name="commonForm"></form>
+	<form id="commonForm" name="commonForm"></form>
 <script type="text/javascript">
 $(document).ready(function(){
-	fn_selectBoardList(1);
+	fn_selectPlaceList2(1);
 		$("a[name='title']").on("click", function(e){ //제목 
 			e.preventDefault();
-			fn_openBoardDetail($(this));
+			fn_openPlaceDetail2($(this));
 		});
 	});
 
-
-	function fn_selectBoardList(pageNo) {
+	function fn_selectPlaceList2(pageNo) {
 		var comAjax = new ComAjax();
 
-		comAjax.setUrl("<c:url value='/pagingBoard3.paw' />");
-		comAjax.setCallback("fn_selectBoardListCallback");
+		comAjax.setUrl("<c:url value='/pagingPlace.paw' />");
+		comAjax.setCallback("fn_selectPlaceListCallback2");
 
 		comAjax.addParam("PAGE_INDEX", $("#PAGE_INDEX").val());
 		comAjax.addParam("PAGE_ROW", 10);
@@ -52,7 +48,8 @@ $(document).ready(function(){
 		comAjax.ajax();
 	}
 	
-	function fn_selectBoardListCallback(data) {
+
+	function fn_selectPlaceListCallback2(data) {
 		var total = data.TOTAL;
 		var body = $(".place");
 		body.empty();
@@ -67,16 +64,16 @@ $(document).ready(function(){
 				divId : "PAGE_NAVI",
 				pageIndex : "PAGE_INDEX",
 				totalCount : total,
-				eventName : "fn_selectBoardList"
+				eventName : "fn_selectPlaceList2"
 			};
 			gfn_renderPaging(params);
 
 			var str = "";
-			$.each(data.boardSearchList,
+			$.each(data.placeSearchList,
 							function(key, value) {
 								str += "<tr>"+ 
 											"<td align='center'>"+ value.PL_IDX + "</td>"+ 
-											"<td class='title'>"+ 
+											"<td class='title' align='center'>"+ 
 												"<a href='#this' name='title'>"+ value.PL_NAME+ "</a>"+ 
 												"<input type='hidden' name='title' id='IDX' value=" + value.PL_IDX + ">"+ 
 											"</td>" + 
@@ -87,18 +84,17 @@ $(document).ready(function(){
 			body.append(str);
 		}
 
-			$("a[name='title']").on("click", function(e) { //제목 
+			$("table[id='place_list']").on("click", function(e) { //제목 
 				e.preventDefault();
-				fn_openBoardDetail($(this));
+				fn_openPlaceDetail($(this));
 			});
 			
-			function fn_openBoardDetail(obj) {
+			function fn_openPlaceDetail(obj) {
 				var comSubmit = new ComSubmit();
-				comSubmit.setUrl("<c:url value='/board/detail.paw' />");
+				comSubmit.setUrl("<c:url value='/place/detail.paw' />");
 				comSubmit.addParam("PL_IDX", obj.parent().find("#IDX").val());
 				comSubmit.submit();
 			}
 	}
 </script>
 </html>
-<!-- <script type="text/javascript" src="resources/js/main/search_board.js"></script> -->
