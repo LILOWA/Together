@@ -6,7 +6,7 @@
 		<link href="/resources/css/board_comm/board_comm_detail.css" rel="stylesheet">
 	</head>
 <style>
- 
+
 .title1{
 margin-top: 10px;
 margin-left: 10px;

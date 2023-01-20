@@ -35,7 +35,7 @@ public class MainController {
 	}
 	
 	
-	@RequestMapping(value = "/search_board")
+	@RequestMapping(value = "/search/board")
 	public ModelAndView boardSearch(CommandMap commandMap, HttpServletRequest request,
 			@RequestParam(value = "keyword", defaultValue = "") String keyword,
 			@RequestParam(value = "searchType", defaultValue = "") String searchType) throws Exception {
@@ -47,7 +47,7 @@ public class MainController {
 		return mv;
 	}
 
-	@RequestMapping(value = "/pagingBoard")
+	@RequestMapping(value = "/paging/board")
 	public ModelAndView boardSearchList(CommandMap commandMap, HttpServletRequest request,
 			@RequestParam(value = "keyword", defaultValue = "") String keyword,
 			@RequestParam(value = "searchType", defaultValue = "") String searchType) throws Exception {
@@ -67,7 +67,7 @@ public class MainController {
 	}
 	
 	
-	@RequestMapping(value = "/search_together")
+	@RequestMapping(value = "/search/together")
 	public ModelAndView togetherSearch(CommandMap commandMap, HttpServletRequest request,
 			@RequestParam(value = "keyword", defaultValue = "") String keyword,
 			@RequestParam(value = "searchType", defaultValue = "") String searchType) throws Exception {
@@ -79,7 +79,7 @@ public class MainController {
 		return mv;
 	}
 	
-	@RequestMapping(value = "/pagingTogether")
+	@RequestMapping(value = "/paging/together")
 	public ModelAndView togetherSearchList(CommandMap commandMap, HttpServletRequest request,
 			@RequestParam(value = "keyword", defaultValue = "") String keyword,
 			@RequestParam(value = "searchType", defaultValue = "") String searchType) throws Exception {
@@ -88,7 +88,6 @@ public class MainController {
 		List<Map<String, Object>> togetherSearchList = mainService.togetherSearchList(commandMap.getMap(), keyword, searchType);
 
 			mv.addObject("togetherSearchList", togetherSearchList);
-
 			
 			if (togetherSearchList.size() > 0) {
 				mv.addObject("TOTAL", togetherSearchList.get(0).get("TOTAL_COUNT"));
@@ -100,7 +99,7 @@ public class MainController {
 	}
 
 	
-	@RequestMapping(value = "/search_place")
+	@RequestMapping(value = "/search/place")
 	public ModelAndView plceSearch(CommandMap commandMap, HttpServletRequest request,
 			@RequestParam(value = "keyword", defaultValue = "") String keyword,
 			@RequestParam(value = "searchType", defaultValue = "") String searchType) throws Exception {
@@ -112,7 +111,7 @@ public class MainController {
 		return mv;
 	}
 	
-	@RequestMapping(value = "/pagingPlace")
+	@RequestMapping(value = "/paging/place")
 	public ModelAndView placeSearchList(CommandMap commandMap, HttpServletRequest request,
 			@RequestParam(value = "keyword", defaultValue = "") String keyword,
 			@RequestParam(value = "searchType", defaultValue = "") String searchType) throws Exception {
@@ -122,7 +121,6 @@ public class MainController {
 
 			mv.addObject("placeSearchList", placeSearchList);
 
-			
 			if (placeSearchList.size() > 0) {
 				mv.addObject("TOTAL", placeSearchList.get(0).get("TOTAL_COUNT"));
 			} else {

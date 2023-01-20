@@ -6,7 +6,7 @@
 		<link href="/resources/css/board_comm/board_comm_modify.css" rel="stylesheet">
 		<script src="/resources/js/board_comm/board_comm.js"></script>
 	</head>
-<style> 
+<style>
  
 .title1{
 margin-top: 10px;
