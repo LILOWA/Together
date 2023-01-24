@@ -4,26 +4,26 @@
 <%@ include file="/WEB-INF/include/common-head.jspf" %>
 <script src="/resources/js/paging/paging.js"></script>
 
-		<div >
-				<table class="card_table" id="place_list">
-					<thead>
-						<tr >
-							<th scope="col">제목 [지역]</th>
-							<th scope="col">내용</th>
-							<th scope="col">작성자</th>
-							<th scope="col">작성일</th>
-						</tr>
-					</thead>
-					<tbody class="place">
-	
-					</tbody>
-				</table>
-		</div>
+	<div>
+			<table class="card_table" id="place_list">
+				<thead>
+					<tr >
+						<th scope="col">제목 [지역]</th>
+						<th scope="col">내용</th>
+						<th scope="col">작성자</th>
+						<th scope="col">작성일</th>
+					</tr>
+				</thead>
+				<tbody class="place">
+
+				</tbody>
+			</table>
+	</div>
 
 		<div id="PAGE_NAVI_P"></div>
-		<input type="hidden" id="PAGE_INDEX" name="PAGE_INDEX" /> <br />
+		<input type="hidden" id="PAGE_INDEX_P" name="PAGE_INDEX_P" /> <br />
 
-	<form id="commonForm" name="commonForm"></form>
+	<form id="commonForm_P" name="commonForm_P"></form>
 <script type="text/javascript">
 $(document).ready(function(){
 	fn_selectPlaceList3(1);
@@ -34,13 +34,13 @@ $(document).ready(function(){
 	});
 	
 	function fn_selectPlaceList3(pageNo) {
-		var comAjax = new ComAjax();
+		var comAjax = new ComAjax("commonForm_P");
 
 		comAjax.setUrl("<c:url value='/paging/place.paw' />");
 		comAjax.setCallback("fn_selectPlaceListCallback3");
 
-		comAjax.addParam("PAGE_INDEX", pageNo);
-		comAjax.addParam("PAGE_ROW", 6);
+		comAjax.addParam("PAGE_INDEX_P", $("#PAGE_INDEX_P").val());
+		comAjax.addParam("PAGE_ROW_P", 6);
 
 		comAjax.addParam("keyword", $('#keyword').val());
 		comAjax.addParam("searchType", $('#searchType').val());
@@ -49,28 +49,29 @@ $(document).ready(function(){
 	}
 	
 
-	function fn_selectPlaceListCallback3(data) {
-		var total3 = data.TOTAL;
+	function fn_selectPlaceListCallback3(data3) {
+		var total3 = data.TOTAL_P;
 		var body = $(".place");
 		body.empty();
 		
 		if (total3 == 0) {
-			var str = "<tr align='center'>" + "<td colspan='4'>조회된 결과가 없습니다.</td>"+"</tr>";
+			var str3 = "<tr align='center'>" + "<td colspan='4'>조회된 결과가 없습니다.</td>"+"</tr>";
 			body.append(str);
 
 		} else {
 			var params3 = {
 				divId : "PAGE_NAVI_P",
-				pageIndex : "PAGE_INDEX",
+				pageIndex : "PAGE_INDEX_P",
 				totalCount : total3,
-				eventName : "fn_selectPlaceList3"
+				eventName : "fn_selectPlaceList3",
+				recordCount : 6
 			};
 			gfn_renderPaging(params3);
 
-			var str = "";
+			var str3 = "";
 			$.each(data.placeSearchList,
 				function(key, value) {
-					str += "<tr>"+ 
+					str3 += "<tr>"+ 
 								"<td align='center'>"+ value.PL_IDX + "</td>"+ 
 								"<td class='title' align='center'>"+ 
 									"<a href='#this' name='title'>"+ value.PL_NAME+ "["+value.PL_LOC+"]"+"</a>"+ 
@@ -80,7 +81,7 @@ $(document).ready(function(){
 								"<td align='center'>"+ value.PL_MOD_DATE + "</td>"+ 
 							"</tr>";
 				});
-			body.append(str);
+			body.append(str3);
 		}
 
 			$("a[name='title']").on("click", function(e) { //제목 
