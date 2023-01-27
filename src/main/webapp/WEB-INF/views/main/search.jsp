@@ -48,6 +48,6 @@
 		</div>
 	</div>
 	
-	<!-- <script type="text/javascript" src="/resources/js/main/main.js"></script> -->
+	<script type="text/javascript" src="/resources/js/main/main.js"></script>
 	</div>
 </main>

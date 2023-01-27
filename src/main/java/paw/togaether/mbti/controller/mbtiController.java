@@ -45,7 +45,7 @@ public class MbtiController {
 		ModelAndView mv = new ModelAndView("/mbti/result");
 		
 		String mbti =  request.getParameter("mbti");	// mtbi.pjsp에서 넘겨진 변수 mbti를 서버에서 저장
-		mv.addObject("mbti", mbti);
+		mv.addObject("MEM_DOG_MBTI", mbti);
 		
 		session = request.getSession(false);
 		String loginId = "aaa";

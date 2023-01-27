@@ -41,17 +41,17 @@
 	<!-- 빈 스캔 패키지 -->
 	<context:component-scan base-package="paw.togaether" />
 	
-	<!-- 웹 소켓 관련 -->
+	<!-- 23.01.26 이소영 : 웹 소켓 관련 -->
 	<!-- 웹소켓 핸들러 정의. 어떤 요청을 어떤 웹소켓 핸들러가 처리할것인지 맵핑/ path: 접속 주소의 엔드포인트 -->
 	<websocket:handlers>
 		<websocket:mapping handler="echoHandler" path="/echo"/>
-		<websocket:mapping handler="chattingHandler" path="/chatting"/>
+		<websocket:mapping handler="chattingHandler" path="/chat"/>
 		<websocket:sockjs></websocket:sockjs>
 	</websocket:handlers>
 	
-	<bean id="echoHandler" class="paw.togaether.common.websocket.EchoHandler"/>
+	<bean id="echoHandler" class="paw.togaether.chat.handler.EchoHandler"/>
 	
-	<bean id="chattingHandler" class="paw.togaether.common.websocket.ChattingHandler"></bean>
+	<bean id="chattingHandler" class="paw.togaether.chat.handler.ChattingHandler"></bean>
 	
 	<mvc:default-servlet-handler/>
 	

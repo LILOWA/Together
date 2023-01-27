@@ -6,31 +6,30 @@
 <%@ include file="/WEB-INF/include/user-header.jspf" %>
 
 <link href="/resources/css/mbti/style.css" rel="stylesheet">
-<script type="text/javascript">
-session.setAttribute("mbti", ${mbti});
-</script>
+<%-- <script type="text/javascript">
+<%=session.setAttribute("mbti", ${MEM_DOG_MBTI});%>
+</script> --%>
 <main class="layoutCenter">
 <div class="container2">
  
 	<article class="result">
-		<form action="/mbti/modify.paw" method="post">
-			<!-- <h2 id="mbti" class="text-center mt-5">MBTI</h2>
-			<img id="mbtiImg" alt="mbtiImg" src="resources/image/mbti/ENFJ.jpg">
-			<img id="explainImg" class="mt-3" alt="explainImg" src="resources/image/mbti/ENFJ0.JPG"> -->
 			
-			<h2 id="mbti" class="text-center">${mbti}</h2>
-			<img id="mbtiImg" alt="mbtiImg" src="/resources/image/mbti/${mbti}.jpg">
-			<img id="explainImg" class="mt-3" alt="explainImg" src="/resources/image/mbti/${mbti}0.JPG">
+			<h2 id="mbti" class="text-center">${MEM_DOG_MBTI}</h2>
+			<img id="mbtiImg" alt="mbtiImg" src="/resources/image/mbti/${MEM_DOG_MBTI}.jpg">
+			<img id="explainImg" class="mt-3" alt="explainImg" src="/resources/image/mbti/${MEM_DOG_MBTI}0.JPG">
 		
 			<button id="mbtiButton" type="button" class="btn submit" onclick="location.replace('/mbti.paw')">테스트 다시 하기</button>
-			<button id="mbtiButton" name="mbti_modify" type="submit" class="btn submit" onclick="mbti_modify();">테스트 결과 저장</button><br>
-		</form>
+			<button id="mbtiButton" name="mbti_modify" class="btn submit" onclick="mbti_modify();">테스트 결과 저장</button>
+			<br>
+		
 		<!-- 공유 버튼 --> 
 		<h3 class="text-center">* 공유하기 *</h3><br>
 		<div class="addthis_inline_share_toolbox_j6rc share"></div><br><br>
+	
 	</article>
 	
-		<input type="hidden" id="mbti" name="mbti" value="${mbti}">
+		<input type="hidden" id="MEM_DOG_MBTI" name="MEM_DOG_MBTI" value="${MEM_DOG_MBTI}">
+		<input type="hidden" id="loginId" name="loginId" value="${loginId}">
 		
 		
 		<script src="https://code.jquery.com/jquery-3.5.1.min.js" ></script>
@@ -40,22 +39,22 @@ session.setAttribute("mbti", ${mbti});
 		
 		<script type="text/javascript">
 			function mbti_modify() {
-			
-<%-- 			var id = '<%= session.getAttribute("loginId") %>'; --%>
-			var id = "<%= session.getAttribute("loginId") %>"; 
-			alert(id);
-				
-				if(id == "null") {
-					if (confirm("로그인 후 정보를 저장하시겠습니까?") == true) {
+				if(${loginId != "" || loginId != "null"}) {
+					$.ajax({
+						type : "POST",
+						url : "/mbti/modify.paw",
+						data : {MEM_DOG_MBTI:"${MEM_DOG_MBTI}", loginId:"${loginId}"},
+						success : function () {
+							alert("저장 완");
+							/* 확인버튼 누르고 어디로 이동할지...? */
+							/* location.replace('/mbti.paw'); */
+							
+						}
+					});
+				} else {
+					if (confirm("로그인 후 정보를 저장하시겠습니까?")) {
 						location.replace("/login.paw");
 					}
-				} else {
-					alert("session.getAttribute("loginId")")
-					alert("session.getAttribute("mbti")")
-					/* if (confirm("정보를 저장하시겠습니까?") == true) {
-					$('article[id=mbtiModify]').attr("action", "/mbti/modify.paw");
-					$('button[name=mbti_modify]').submit;
-					alert("결과 저장 완료"); */
 				}
 			}
 		</script>
