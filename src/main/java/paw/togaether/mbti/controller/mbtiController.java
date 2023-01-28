@@ -48,8 +48,6 @@ public class MbtiController {
 		mv.addObject("MEM_DOG_MBTI", mbti);
 		
 		session = request.getSession(false);
-		String loginId = "aaa";
-		session.setAttribute("loginId", loginId);
 
 		return mv;
 	}
