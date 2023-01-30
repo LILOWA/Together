@@ -18,7 +18,7 @@ public class MainController {
 	@Resource(name = "mainService")
 	private MainService mainService;
 	
-	@RequestMapping(value = "/search")	
+	@RequestMapping(value = "/search")
 	public ModelAndView search(CommandMap commandMap, HttpServletRequest request,
 			@RequestParam(value = "keyword", defaultValue = "") String keyword,
 			@RequestParam(value = "searchType", defaultValue = "") String searchType) throws Exception {
@@ -31,7 +31,7 @@ public class MainController {
 	}
 	
 	
-	@RequestMapping(value = "/search/board")	
+	@RequestMapping(value = "/search/board")
 	public ModelAndView boardSearch(CommandMap commandMap, HttpServletRequest request,
 			@RequestParam(value = "keyword", defaultValue = "") String keyword,
 			@RequestParam(value = "searchType", defaultValue = "") String searchType) throws Exception {

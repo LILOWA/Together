@@ -34,29 +34,29 @@
 		<script src="https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/js/bootstrap.bundle.min.js"></script>
 
 		<script src="/resources/js/mbti/mbti.js"></script>
-
+		
 		<script type="text/javascript">
 			function mbti_modify() {
-				 if(${mem_id == "" || mem_id == null}) {
-					if (confirm("로그인 후 정보를 저장하시겠습니까?")) {
-						location.replace("/member/login.paw");
-					}
-				} else {
+				if(${mem_id != "" || mem_id != "null"}) {
 					$.ajax({
 						type : "POST",
 						url : "/mbti/modify.paw",
 						data : {MEM_DOG_MBTI:"${MEM_DOG_MBTI}", mem_id:"${mem_id}"},
 						success : function () {
 							alert("저장 완");
-							location.replace("/sample/admin.paw");
+							location.replace('/sample/admin.paw');
 							
-							}
-						});
+						}
+					});
+				} else {
+					if (confirm("로그인 후 정보를 저장하시겠습니까?")) {
+						location.replace("/login.paw");
+					}
 				}
 			}
 		</script>
-
-		<!-- Go to www.addthis.com/dashboard to customize your tools --> 
+		
+	<!-- Go to www.addthis.com/dashboard to customize your tools --> 
 	<script type="text/javascript" src="//s7.addthis.com/js/300/addthis_widget.js#pubid=ra-63ba760d20bdd2c9"></script>
 	
 </div>
