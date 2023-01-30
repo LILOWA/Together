@@ -4,13 +4,12 @@
 <link href="resources/css/mbti/style.css" rel="stylesheet"> 
 
 <!-- <script src="https://cdn.jsdelivr.net/npm/sockjs-client@1/dist/sockjs.min.js"></script> -->
-<script type="text/javascript" src="resources/js/chat/sockjs.js"></script>
+<script type="text/javascript" src="/resources/js/chat/sockjs.js"></script>
 <script type="text/javascript">
 	var wsocket;
 	
 	function connect() {
-		wsocket = new SockJS("http://localhost:8080/chat
-				");
+		wsocket = new SockJS("http://localhost:8080/chat");
 		wsocket.onopen = onOpen;
 		wsocket.onmessage = onMessage;
 		wsocket.onclose = onClose;
