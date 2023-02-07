@@ -43,7 +43,7 @@
 				<exclusion>
 					<groupId>commons-logging</groupId>
 					<artifactId>commons-logging</artifactId>
-				 </exclusion>
+				</exclusion>
 			</exclusions>
 		</dependency>
 		<!-- 스프링 관련 추가 라이브러리 -->
@@ -58,25 +58,25 @@
 			<version>${org.springframework-version}</version>
 		</dependency>
 		<dependency>
-            <groupId>org.springframework</groupId>
-            <artifactId>spring-aop</artifactId>
-            <version>${org.springframework-version}</version>
-        </dependency>
-        <dependency>
-            <groupId>org.springframework</groupId>
-            <artifactId>spring-beans</artifactId>
-            <version>${org.springframework-version}</version>
-        </dependency>
-        <dependency>
-            <groupId>org.springframework</groupId>
-            <artifactId>spring-context-support</artifactId>
-            <version>${org.springframework-version}</version>
-        </dependency>
-        <dependency>
-            <groupId>org.springframework</groupId>
-            <artifactId>spring-core</artifactId>
-            <version>${org.springframework-version}</version>
-        </dependency>
+			<groupId>org.springframework</groupId>
+			<artifactId>spring-aop</artifactId>
+			<version>${org.springframework-version}</version>
+		</dependency>
+		<dependency>
+			<groupId>org.springframework</groupId>
+			<artifactId>spring-beans</artifactId>
+			<version>${org.springframework-version}</version>
+		</dependency>
+		<dependency>
+			<groupId>org.springframework</groupId>
+			<artifactId>spring-context-support</artifactId>
+			<version>${org.springframework-version}</version>
+		</dependency>
+		<dependency>
+			<groupId>org.springframework</groupId>
+			<artifactId>spring-core</artifactId>
+			<version>${org.springframework-version}</version>
+		</dependency>
 		<dependency>
 			<groupId>org.springframework</groupId>
 			<artifactId>spring-jdbc</artifactId>
@@ -87,7 +87,12 @@
 			<artifactId>spring-tx</artifactId><!-- 트랜젝션 -->
 			<version>${org.springframework-version}</version>
 		</dependency>
-		
+		<dependency>
+			<groupId>org.springframework.security</groupId>
+			<artifactId>spring-security-web</artifactId>
+			<version>${org.springframework-version}</version>
+		</dependency>
+
 		<!-- Maven -->
 		<dependency>
 			<groupId>org.apache.maven.plugins</groupId>
@@ -96,11 +101,11 @@
 		</dependency>
 		
 		<!-- AOP Alliance -->
-        <dependency>
-            <groupId>aopalliance</groupId>
-            <artifactId>aopalliance</artifactId>
-            <version>1.0</version>
-        </dependency>
+		<dependency>
+			<groupId>aopalliance</groupId>
+			<artifactId>aopalliance</artifactId>
+			<version>1.0</version>
+		</dependency>
 				
 		<!-- AspectJ -->
 		<dependency>
@@ -117,7 +122,8 @@
 			<groupId>org.aspectj</groupId>
 			<artifactId>aspectjtools</artifactId>
 			<version>${org.aspectj-version}</version>
-		</dependency>	
+		</dependency>
+
 		
 		<!-- Logging -->
 		<dependency>
@@ -147,6 +153,7 @@
 			<artifactId>log4j</artifactId>
 			<version>1.3alpha-8</version>
 		</dependency>
+
 		<dependency>
 			<groupId>log4j</groupId>
 			<artifactId>log4j</artifactId>
@@ -207,85 +214,19 @@
 		
 		<!-- 어노테이션 -->
 		<dependency>
-		    <groupId>javax.annotation</groupId>
-		    <artifactId>jsr250-api</artifactId>
-		    <version>1.0</version>
-        </dependency>
-        
-        <!-- ********************************************************** -->
-        <dependency>
-		   <groupId>javax.annotation</groupId>
-		   <artifactId>javax.annotation-api</artifactId>
-		   <version>1.3.2</version>
+			<groupId>javax.annotation</groupId>
+			<artifactId>jsr250-api</artifactId>
+			<version>1.0</version>
 		</dependency>
-	
-		<!-- ************************* 버전 수정 ********************** -->
+
 		<!-- Test -->
 		<dependency>
 			<groupId>junit</groupId>
 			<artifactId>junit</artifactId>
-			<version>4.12</version>
+			<version>4.7</version>
 			<scope>test</scope>
 		</dependency>
 		
-		<!-- ********************************************************** -->
-		<dependency>
-			<groupId>org.springframework</groupId>
-			<artifactId>spring-test</artifactId>
-			<version>${org.springframework-version}</version>
-		</dependency>
-		
-		<!-- ********************************************************** -->
-		<dependency>
-	         <groupId>org.apache.tiles</groupId>
-	         <artifactId>tiles-core</artifactId>
-	         <version>3.0.5</version>
-        </dependency>
-		
-		<!-- ********************************************************** -->
-		<dependency>
-	         <groupId>org.apache.tiles</groupId>
-	         <artifactId>tiles-el</artifactId>
-	         <version>3.0.5</version>
-       </dependency>
-       
-       <!-- ********************************************************** -->
-       <dependency>
-	       <groupId>org.apache.tiles</groupId>
-	       <artifactId>tiles-jsp</artifactId>
-	       <version>3.0.5</version>
-       </dependency>
-       
-       <!-- ********************************************************** -->
-       <dependency>
-	       <groupId>org.apache.tiles</groupId>
-	       <artifactId>tiles-servlet</artifactId>
-	       <version>3.0.5</version>
-       </dependency>
-       
-       <!-- ********************************************************** -->
-       <dependency><!--  -->
-			<groupId>org.apache.velocity</groupId>
-			<artifactId>velocity</artifactId>
-			<version>1.7</version>
-		</dependency>
-       
-       <!-- ********************************************************** -->
-       <!-- jQuery -->
-		<dependency>
-            <groupId>org.webjars.bower</groupId>
-            <artifactId>jquery</artifactId>
-            <version>3.5.1 </version>
-        </dependency>
-        
-        <!-- ********************************************************** -->
-        <!-- https://mvnrepository.com/artifact/com.googlecode.json-simple/json-simple -->
-		<dependency>
-			<groupId>com.googlecode.json-simple</groupId>
-			<artifactId>json-simple</artifactId>
-			<version>1.1.1</version>
-		</dependency>
-       
 		<!-- DB 관련 라이브러리 -->
 		<dependency>
 			<groupId>commons-dbcp</groupId>
@@ -331,31 +272,50 @@
 			<version>1.9.13</version>
 		</dependency>
 		<dependency>
-		    <groupId>com.fasterxml.jackson.core</groupId>
-		    <artifactId>jackson-core</artifactId>
-		    <version>2.13.3</version>
+			<groupId>com.fasterxml.jackson.core</groupId>
+			<artifactId>jackson-core</artifactId>
+			<version>2.13.3</version>
 		</dependency>
 		<dependency>
 			<groupId>com.fasterxml.jackson.core</groupId>
 			<artifactId>jackson-databind</artifactId>
 			<version>2.13.3</version>
 		</dependency>
-        
-        <!-- 썸네일 생성용 라이브러리 -->
+		
+		<!-- 썸네일 생성용 라이브러리 -->
 		<dependency>
 			<groupId>net.coobird</groupId>
 			<artifactId>thumbnailator</artifactId>
 			<version>0.4.8</version>
 		</dependency>
-        
-        <!-- 인코딩: Apache Codec -->
-        <dependency>
+		
+		<!-- 23.01.28 이소영 웹소켓 -->
+		<dependency>
+		    <groupId>org.springframework</groupId>
+		    <artifactId>spring-websocket</artifactId>
+		    <version>${org.springframework-version}</version>
+		</dependency>
+		<!-- 23.02.02 이소영 메세징 -->
+		<dependency>
+		    <groupId>org.springframework</groupId>
+		    <artifactId>spring-messaging</artifactId>
+		    <version>${org.springframework-version}</version>
+		</dependency>
+		<!-- 23.02.03 이소영 STOMP -->
+		<dependency>
+	    	<groupId>org.springframework.integration</groupId>
+		    <artifactId>spring-integration-stomp</artifactId>
+		    <version>6.0.2</version>
+		</dependency>
+		
+		<!-- 인코딩: Apache Codec -->
+		<dependency>
 			<groupId>commons-codec</groupId>
 			<artifactId>commons-codec</artifactId>
 			<version>1.10</version>
 		</dependency>
-        
-        <!-- Oracle -->
+		
+		<!-- Oracle -->
 		<dependency>
 			<groupId>com.oracle.database.jdbc</groupId>
 			<artifactId>ojdbc8</artifactId>
@@ -364,53 +324,53 @@
 	</dependencies>
 	
 	<!-- 프로젝트의 빌드방법을 지정 -->
-    <build>
-    	<defaultGoal>install</defaultGoal>
+	<build>
+		<defaultGoal>install</defaultGoal>
 		<directory>${basedir}/target</directory>
 		<finalName>TGT</finalName>
-        <plugins>
-            <plugin>
-                <artifactId>maven-eclipse-plugin</artifactId>
-                <version>2.9</version>
-                <configuration>
-                    <additionalProjectnatures>
-                        <projectnature>org.springframework.ide.eclipse.core.springnature</projectnature>
-                    </additionalProjectnatures>
-                    <additionalBuildcommands>
-                        <buildcommand>org.springframework.ide.eclipse.core.springbuilder</buildcommand>
-                    </additionalBuildcommands>
-                    <downloadSources>true</downloadSources>
-                    <downloadJavadocs>true</downloadJavadocs>
-                </configuration>
-            </plugin>
-            <plugin>
-                <groupId>org.apache.maven.plugins</groupId>
-                <artifactId>maven-compiler-plugin</artifactId>
-                <version>2.5.1</version>
-                <configuration>
-                    <source>${java-version}</source>
-                    <target>${java-version}</target>
-                    <encoding>UTF-8</encoding>
-                    <compilerArgument>-Xlint:all</compilerArgument>
-                    <showWarnings>true</showWarnings>
-                    <showDeprecation>true</showDeprecation>
-                </configuration>
-            </plugin>
-            <plugin>
-                <groupId>org.codehaus.mojo</groupId>
-                <artifactId>exec-maven-plugin</artifactId>
-                <version>1.2.1</version>
-                <configuration>
-                    <mainClass>org.test.int1.Main</mainClass>
-                </configuration>
-            </plugin>
-            
-            <!-- JavaDoc -->
-            <plugin>
+		<plugins>
+			<plugin>
+				<artifactId>maven-eclipse-plugin</artifactId>
+				<version>2.9</version>
+				<configuration>
+					<additionalProjectnatures>
+						<projectnature>org.springframework.ide.eclipse.core.springnature</projectnature>
+					</additionalProjectnatures>
+					<additionalBuildcommands>
+						<buildcommand>org.springframework.ide.eclipse.core.springbuilder</buildcommand>
+					</additionalBuildcommands>
+					<downloadSources>true</downloadSources>
+					<downloadJavadocs>true</downloadJavadocs>
+				</configuration>
+			</plugin>
+			<plugin>
+				<groupId>org.apache.maven.plugins</groupId>
+				<artifactId>maven-compiler-plugin</artifactId>
+				<version>2.5.1</version>
+				<configuration>
+					<source>${java-version}</source>
+					<target>${java-version}</target>
+					<encoding>UTF-8</encoding>
+					<compilerArgument>-Xlint:all</compilerArgument>
+					<showWarnings>true</showWarnings>
+					<showDeprecation>true</showDeprecation>
+				</configuration>
+			</plugin>
+			<plugin>
+				<groupId>org.codehaus.mojo</groupId>
+				<artifactId>exec-maven-plugin</artifactId>
+				<version>1.2.1</version>
+				<configuration>
+					<mainClass>org.test.int1.Main</mainClass>
+				</configuration>
+			</plugin>
+			
+			<!-- JavaDoc -->
+			<plugin>
 				<groupId>org.apache.maven.plugins</groupId>
 				<artifactId>maven-javadoc-plugin</artifactId>
 				<version>2.5</version>
 			</plugin>
-        </plugins>
-    </build>
+		</plugins>
+	</build>
 </project>

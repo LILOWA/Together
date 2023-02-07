@@ -2,6 +2,7 @@
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 <%@ include file="/WEB-INF/include/user-header.jspf" %>
 <script src="https://kit.fontawesome.com/e9bd4d3977.js" crossorigin="anonymous"></script>
+<script src="/resources/js/together/togewrite.js"></script>
 <style>
 .fa-solid {
 color:#f0b1aa;
@@ -29,8 +30,9 @@ white-space:pre;
 <h1 class="txt_center"><span class="fa-solid fa-paw"></span>함께해요<span class="fa-solid fa-paw"></span></h1>
 
 	<div class="main_wrap">
-		<form method="post" action="/together/modify.paw">
+		<form method="post" action="/together/modify.paw" name="writefrm">
 		<input type="hidden" id="TO_IDX" name="TO_IDX" value="${map.TO_IDX }">
+		<input type="hidden" id="TO_WRITER_ID" name="TO_WRITER_ID" value="${mem_id}">
 			<table class="modi_table">
 				<tbody>
 					<tr>
@@ -64,8 +66,7 @@ white-space:pre;
 					</tr>
 					<tr>
 						<th scope="row">내용</th>
-						<td><textarea class="slim_scroll" id="TO_CONTENTS" name="TO_CONTENTS" placeholder="내용입력해주게:)">
-						${map.TO_CONTENTS}</textarea>
+						<td><textarea class="slim_scroll" id="TO_CONTENTS" name="TO_CONTENTS" placeholder="내용입력해주게:)">${map.TO_CONTENTS}</textarea>
 						</td>
 					</tr>
 					<tr>
@@ -108,8 +109,8 @@ XL : 45 ~ 90kg
 			</table>
 			<br/>
 			<div class="flexCenter">
-				<input type="submit" class="btn submit" value="수정하기"/>
-				<a class="btn" href="/together/list.paw">목록으로</a>
+				<input type="button" class="btn submit" value="수정하기" onclick="writeform_check();"/><!-- 유효성검사 -->
+				<a class="btn" href="/together/openList.paw">목록으로</a>
 			</div>
 		</form>
 	</div>
