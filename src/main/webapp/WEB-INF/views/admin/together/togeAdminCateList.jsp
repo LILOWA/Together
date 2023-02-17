@@ -4,11 +4,11 @@
 <%@ include file="/WEB-INF/include/admin-header.jspf" %>
 <script src="https://kit.fontawesome.com/e9bd4d3977.js" crossorigin="anonymous"></script>
 <style>
-.fa-solid {
+span.fa-solid {
 color:#f0b1aa;
 }
 
-.btn.submit{
+#ctreg.btn.submit{
 margin-right:5px;
 }
 </style>
@@ -51,7 +51,7 @@ margin-right:5px;
 </div>
 <br/>
 <div class="flexCenter">
-	<a class="btn submit" href="/admin/together/catewriteForm.paw">함께해요 분류등록하기</a>
+	<a class="btn submit" id="ctreg" href="/admin/together/catewriteForm.paw">함께해요 분류등록하기</a>
 	<a class="btn" href="/admin/together/list.paw">목록으로</a>
 </div>
 </main>

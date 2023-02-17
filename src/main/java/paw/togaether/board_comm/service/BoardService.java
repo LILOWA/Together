@@ -34,4 +34,21 @@ public interface BoardService {
 	
 	//댓글 수정
 	void commentModify(Map<String, Object> map) throws Exception;
+	
+	// 마이페이지 내가 쓴 글 게시판 띄우기
+	List<Map<String, Object>> myPageList(Map<String, Object> map) throws Exception;
+	
+	// 마이페이지 내가 쓴 댓글 띄우기
+	List<Map<String, Object>> myPageComment(Map<String, Object> map) throws Exception;
+	
+	//관리자페이지 리스트 띄우기
+	List<Map<String, Object>> adminList(Map<String, Object> map) throws Exception;
+	
+	//관리자페이지 상세보기
+	Map<String, Object> adminBoardDetail(Map<String, Object> map) throws Exception;
+	
+	//관리자 글 삭제하기
+	void adminBoardDelete(Map<String, Object> map) throws Exception;
+	
+	
 }

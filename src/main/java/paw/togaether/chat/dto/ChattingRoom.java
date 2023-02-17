@@ -8,7 +8,7 @@ import lombok.Data;
 
 @Data
 @Builder
-public class ChatingRoom {
+public class ChattingRoom {
 	private String roomNumber;
 	private String roomName;
 	private LinkedList<String> users;
@@ -21,7 +21,7 @@ public class ChatingRoom {
 			return false;
 		if (getClass() != obj.getClass())
 			return false;
-		ChatingRoom other = (ChatingRoom) obj;
+		ChattingRoom other = (ChattingRoom) obj;
 		return Objects.equals(roomNumber, other.roomNumber);
 	}
 

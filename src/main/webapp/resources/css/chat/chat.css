@@ -10,34 +10,36 @@ li {
 }
  
 html {
-    font-size: 62.5%;
+    
 }
- 
+
 .swal-footer {
 	text-align: center;
 }
 /* 채팅방 목록 */
  
- 
 main {
+	background-color: #fff;
+	display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.chat_main {
     width: 35vw;
     min-width: 300px;
     height: 90vh;
-    border: 1px solid #000;
-    position: absolute;
-    left: 50%;
-    top: 50%;
-    transform: translate(-50%, -50%);
+	font-size: 20px;
 }
  
-main h1 {
-    font-size: 2rem;
+.chat_main h1 {
+	font-size: 20px;
     padding: 10px;
     height: 50px;
     box-sizing: border-box;
 }
  
-main .new_chat {
+.chat_main .new_chat {
 	position: absolute;
 	top: 10px;
 	right: 10px;
@@ -47,33 +49,33 @@ main .new_chat {
 	cursor: pointer;
 }
  
-main .new_chat:hover {
+.chat_main .new_chat:hover {
 	background: #eee;
 }
  
-main nav {
-	 font-size: 1.6rem;
+.chat_main nav {
+	font-size: 20px;
 	 display: flex;
 	 text-align: center;
 	 margin-bottom: 5px;
 	 padding: 0 7px;
 }
  
-main nav > span:first-child {
+.chat_main nav > span:first-child {
 	width: 80%;
 }
  
-main nav > span:last-child {
+.chat_main nav > span:last-child {
 	width: 20%;
 }
  
-main ul {
+.chat_main ul {
     overflow-y: auto;
     max-height: calc(100% - 50px);
 }
  
-main li {
-    font-size: 1.6rem;
+.chat_main li {
+	font-size: 20px;
     width: 100%;
     height: 70px;
     padding: 7px;
@@ -82,11 +84,11 @@ main li {
     justify-content: space-between;
 }
  
-main li:hover {
+.chat_main li:hover {
    background: #eee;
 }
  
-main .chat_title {
+.chat_main .chat_title {
     font-weight: bold;
     width: 80%;
     overflow: hidden;
@@ -94,7 +96,7 @@ main .chat_title {
     white-space: nowrap;
 }
  
-main .chat_count {
+.chat_main .chat_count {
     width: 20%;
     text-align: center;
 }
@@ -106,13 +108,9 @@ main .chat_count {
 /* 채팅방 안 */
  
 .chat {
-    width: 50vw;
     min-width: 300px;
+    width : 80vh;
     height: 90vh;
-    position: absolute;
-    left: 50%;
-    top: 50%;
-    transform: translate(-50%, -50%);
     z-index: 10;
    	display: none;
 }
@@ -122,26 +120,31 @@ main .chat_count {
 	display: flex;
 }
  
+.chat_zone {
+	margin-left: 50;
+}
+
 .chat .chat_body {
-  	background: rgb(195, 204, 221);
+  	background: #fff;
 	height: 100%;
 	width: 70%;
     order: 1;
-    border: 1px solid #000;
+/*    border: 1px solid #000;*/
     position: relative;
-}
+} /* #faf2eb */
  
 .chat h2 {
-    font-size: 2rem;
+	font-size: 20px;
+	font-weight: bold;
     padding: 10px;
     height: 50px;
     box-sizing: border-box;
     text-align: center;
-    background: #eee;
+    background: #f0b1aa;
 }
  
 .chat .chat_back {
-    font-size: 2rem;
+	font-size: 20px;
     width: 50px;
     height: 50px;
     position: absolute;
@@ -156,10 +159,11 @@ main .chat_count {
     height: calc(100% - 150px);
     box-sizing: border-box;
     padding: 5px 0;
+    background-color: #faf2eb;
 }
  
 .chat li {
-    font-size: 1.5rem;
+	font-size: 20px;
 }
  
 .chat li > div {
@@ -175,7 +179,7 @@ main .chat_count {
 	margin: 0 auto;
 	border-radius: 15px;
 	padding: 5px 10px;
-	background: #ae9191;
+	background: #e66f84;
 	color: #fff;
 }
  
@@ -200,7 +204,7 @@ main .chat_count {
 }
  
 .chat .chat_in_time {
-    font-size: 1.3rem;
+	font-size: 20px;
     margin: 0 5px;
     display: flex;
     align-items: flex-end;
@@ -215,10 +219,11 @@ main .chat_count {
     max-height: 400px;
     overflow-y: auto;
     word-break: break-all;
+	font-size: 20px;
 }
  
 .chat .chat_me .chat_content {
-    background: yellow;
+    background: #f0b1aa;
 }
  
 .chat .chat_other .chat_content {
@@ -250,10 +255,12 @@ main .chat_count {
  
 .chat_input .chat_button_area {
     width: 13%;
+    margin-top: 10px;
+    margin-left: 10px;
 }
  
 .chat_input .chat_button_area button {
-    background: yellow;
+    background: #f0b1aa;
     border: 1px solid #ddd;
     border-radius: 3px;
     padding: 5px;
@@ -263,42 +270,45 @@ main .chat_count {
 }
  
 .chat .chat_users {
-	border: 1px solid #ddd;
 	width: 30%;
 	height: 300px;
-/* 	position: absolute;
-	right: 101%;
-	top: 0; */
     margin-right: 3px;
+    font-size: 20px;
 }
- 
+
 /* 참가인원 */
 .chat .chat_users h2 {
-	font-size: 1.6rem;
+	font-size: 20px;
 }
  
 .chat .chat_users .chat_nickname {
-	font-size: 1.6rem;
+	font-size: 20px;
 	height: calc(100% - 50px);
 	overflow: auto;
+	background-color: #fff;
+	margin-bottom: 120px;
 }
 	
 .chat .chat_users .chat_nickname li {
 	padding: 5px;
+    font-size: 20px;
 }
- 
-/* 참가인원 */
- 
- 
-/* 채팅방 안 */
- 
- 
- 
+
+.btn {
+    font-size: 20px;
+} 
+
+.chat_exit {
+	font-size: 16px;
+	margin-left: 10px;
+	padding: 1px;
+}
+
 @media(max-width: 1024px)  {
-	html {
-		font-size: 60%;
+	.chat_main {
+	    font-size: 20px;
 	}
-	main {
+	.chat_main {
 		width: 99vw;
 	}
 	

@@ -9,7 +9,7 @@
 <!-- 컨텐츠는 꼭 main 태그로 감싸주시고, 클래스명은 layoutCenter로 지정해주세요 -->
 <main class="layoutCenter">
 <h1 class="txt_center">우리동네 시설 등록</h1>
-<form id="placeWrite" action="write.paw" method="post">
+<form id="placeWrite" method="post">
 <input type="hidden" name="ph_board_type" value="place">
 <c:if test="${!empty detail.place.PL_IDX}">
 <input type="hidden" id="pl_idx" name="pl_idx" value="${detail.place.PL_IDX}"></c:if>
@@ -165,6 +165,7 @@
 							<input type="file" accept="image/*" id="photo_${var.index+1}" name="photo_${var.index+1}" >
 							<input type="hidden" name="idx_${var.index+1}" value="${i.PH_IDX}">
 							<img width="200px" src="/resources/upload/${i.PH_STORED_FILE_NAME}" >
+							<span id="deleteBtn" onclick="reset(event,this)">❌</span>
 						</label>   
 					</c:forEach>
 					<!-- 이미지 등록안한 <input type="file">태그 -->

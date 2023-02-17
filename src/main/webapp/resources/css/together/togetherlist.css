@@ -24,7 +24,7 @@ display:absolute;
 .cate_wrap{
 width:100%;
 display:flex;
-}
+} 
 
 .main_list{
 width:100%;
@@ -36,18 +36,21 @@ position:relative;
 .cate_button{
 position:relative;
 height:auto;
-}
+padding-top : 110px;
+} 
 
 .cate_button li{
 text-align:center;
 }
 
-.button_list{
+ul.button_list{
 border:1px solid #f0b1aa;
 width:100%;
+position:relative;
+height:auto;
 }
 
-li{
+li.tcname{
 margin : 20px;
 }
 
@@ -56,10 +59,25 @@ white-space :nowrap;
 font-size:20px;
 }
 
+input.btn.submit{
+font-size : 16px;
+font-weight : bold;
+}
+
 span.btn.submit{
 white-space : nowrap;
 font-size : 15px;
 margin : 5px;
+}
+
+span.btn.warn{
+white-space : nowrap;
+font-size : 15px;
+margin : 5px;
+}
+
+li.tc{
+margin: 20px;
 }
 
 input[type="button"]{
