@@ -25,18 +25,20 @@ public class ReviewAdminController {
 	private ReviewService reviewService;
 	
 	/** 23.02.06 신현지 : 관리자페이지에서 모든 리뷰 리스트로 출력 */
-	@RequestMapping(value="/admin/review/list")
-	public ModelAndView openAllReviews(CommandMap commandMap, HttpSession session) throws Exception{
-		
-		ModelAndView m = new ModelAndView("/admin/review/list"); 
-		List<Map<String,Object>> reviews = reviewService.openAllReviews(commandMap.getMap());
-		m.addObject("reviews",reviews);
-		
-		return m;
-	}
+	/*
+	 * @RequestMapping(value="/admin/review/list2") public ModelAndView
+	 * openAllReviews(CommandMap commandMap, HttpSession session) throws Exception{
+	 * 
+	 * ModelAndView m = new ModelAndView("/admin/review/list2");
+	 * List<Map<String,Object>> reviews =
+	 * reviewService.openAllReviews(commandMap.getMap());
+	 * m.addObject("reviews",reviews);
+	 * 
+	 * return m; }
+	 */
 	
 	
-	/** 23.01.25 신현지: 마이페이지에서 내 리뷰(특정 하나) 조회 메서드 */
+	/** 23.02.06 신현지: 특정회원의 리뷰 상세보기 */
 	@RequestMapping(value="/admin/review/detail")
 	public ModelAndView openMyReview(CommandMap commandMap) throws Exception{
 		ModelAndView m = new ModelAndView("/admin/review/detail");
@@ -57,7 +59,7 @@ public class ReviewAdminController {
 	
 	
 	/** 23.02.06 신현지 : 모든 리뷰를 리스트로 출력 */
-	@RequestMapping(value="/admin/review/search")
+	@RequestMapping(value="/admin/review/list")
 	public ModelAndView searchReviews(CommandMap commandMap) throws Exception{
 		
 		ModelAndView m = new ModelAndView("/admin/review/list"); 		
